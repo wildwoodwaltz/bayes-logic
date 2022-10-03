@@ -10,3 +10,14 @@ MAP_FILE = 'cape_python.png'
 SA1_CORNERS = (130, 265, 180, 315) # (UL-X, UL-Y, LR-X, LR-Y)
 SA2_CORNERS = (80, 255, 130, 305) # (UL-X, UL-Y, LR-X, LR-Y)
 SA3_CORNERS = (105, 205, 155, 255) # (UL-X, UL-Y, LR-X, LR-Y)
+
+class Search():
+    """Simple Bayesian Search and Rescue Game with 3 search areas."""
+
+    def __init__(self,name):
+        self.name = name
+        self.img = cv.imread(MAP_FILE, cv.IMREAD_COLOR)
+        if self.img is None:
+            print("Map file not found or could not be loaded {}".format(MAP_FILE, file=sys.stderr))
+            sys.exit(1)
+        
