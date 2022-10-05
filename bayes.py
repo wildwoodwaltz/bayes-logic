@@ -59,3 +59,10 @@ class Search():
         cv.imshow('Search Area', self.img)
         cv.moveWindow('Search Area', 750,10)
         cv.waitKey(500)
+
+    def sailor_final_location(self, num_search_areas):
+        """Return the actual x,y co-ords of the missing sailor"""
+        # Find sailor coordinates with respect to any Search Array subarray
+        self.sailor_actual[0] = np.random.choice(self.sa1.shape[1],1)
+        self.sailor_actual[1] = np.random.choice(self.sa1.shape[0],1)
+        
