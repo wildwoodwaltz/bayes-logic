@@ -42,4 +42,11 @@ class Search():
         cv.putText(self.img, '0', (8,370), cv.FONT_HERSHEY_PLAIN, 1, (0,0,0))
         cv.putText(self.img, '50 Nautical Miles', (71,370), cv.FONT_HERSHEY_PLAIN, 1, (0,0,0))
 
+        cv.rectangle(self.img, (SA1_CORNERS[0], SA1_CORNERS[1]),(SA1_CORNERS[2], SA1_CORNERS[3]), (0, 0, 0), 1)
+        cv.putText(self.img, '1',(SA1_CORNERS[0] + 3, SA1_CORNERS[1] + 15),cv.FONT_HERSHEY_PLAIN, 1, 0)
         
+        cv.rectangle(self.img, (SA2_CORNERS[0], SA2_CORNERS[1]),(SA2_CORNERS[2], SA2_CORNERS[3]), (0, 0, 0), 1)
+        cv.putText(self.img, '2',(SA2_CORNERS[0] + 3, SA2_CORNERS[1] + 15),cv.FONT_HERSHEY_PLAIN, 1, 0)
+        
+        cv.rectangle(self.img, (SA3_CORNERS[0], SA3_CORNERS[1]),(SA3_CORNERS[2], SA3_CORNERS[3]), (0, 0, 0), 1)
+        cv.putText(self.img, '3',(SA3_CORNERS[0] + 3, SA3_CORNERS[1] + 15),cv.FONT_HERSHEY_PLAIN, 1, 0)
