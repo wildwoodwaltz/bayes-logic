@@ -72,3 +72,7 @@ class Search():
             x = self.sailor_actual[0] + SA1_CORNERS[0]
             y = self.sailor_actual[1] + SA1_CORNERS[1]
             self.area_actual = 1
+        elif area == 2:
+            x = self.sailor_actual[0] + SA2_CORNERS[0]
+            y = self.sailor_actual[1] + SA2_CORNERS[1]
+            self.area_actual = 2
