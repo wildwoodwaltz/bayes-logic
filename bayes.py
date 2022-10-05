@@ -65,4 +65,10 @@ class Search():
         # Find sailor coordinates with respect to any Search Array subarray
         self.sailor_actual[0] = np.random.choice(self.sa1.shape[1],1)
         self.sailor_actual[1] = np.random.choice(self.sa1.shape[0],1)
-        
+
+        area = int(random.triangular(1, num_search_areas + 1))
+
+        if area == 1:
+            x = self.sailor_actual[0] + SA1_CORNERS[0]
+            y = self.sailor_actual[1] + SA1_CORNERS[1]
+            self.area_actual = 1
