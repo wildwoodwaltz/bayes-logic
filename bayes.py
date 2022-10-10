@@ -143,3 +143,10 @@ def main():
     print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
     search_num = 1
 
+    while True:
+        app.calc_search_effectiveness()
+        draw_menu(search_num)
+        choice = input("Choice: ")
+
+        if choice == "0"
+            sys.exit
