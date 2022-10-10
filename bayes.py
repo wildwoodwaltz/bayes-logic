@@ -148,5 +148,13 @@ def main():
         draw_menu(search_num)
         choice = input("Choice: ")
 
-        if choice == "0"
+        if choice == "0":
             sys.exit
+        elif choice == "1":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(1, app.sa1, app.sep1)
+            
+            app.sep1 = (len(set(coords_1 + coords_2))) / (len(app.sa1)**2)
+            app.sep2 = 0
+            app.sep3 = 0
