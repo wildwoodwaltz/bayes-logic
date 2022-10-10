@@ -82,4 +82,8 @@ class Search():
             self.area_actual = 3
         return x,y
 
-        
+    def calc_search_effectiveness(self):
+        """Setting decimal seach effectiveness value per search area."""
+        self.sep1 = random.uniform(0.2, 0.9)
+        self.sep2 = random.uniform(0.2, 0.9)
+        self.sep3 = random.uniform(0.2, 0.9)
