@@ -83,7 +83,7 @@ class Search():
         return x,y
 
     def calc_search_effectiveness(self):
-        """Setting decimal seach effectiveness value per search area."""
+        """Setting decimal search effectiveness value per search area."""
         self.sep1 = random.uniform(0.2, 0.9)
         self.sep2 = random.uniform(0.2, 0.9)
         self.sep3 = random.uniform(0.2, 0.9)
@@ -133,3 +133,13 @@ def draw_menu(search_num):
         7 - Start Over
         """
     )
+
+def main():
+    app.Search('Cape_Python')
+    app.draw_map(last_known(160,290))
+    sailor_x, sailor_y = app.sailor_final_location(num_search_areas = 3)
+    print ("-" * 65)
+    print("\nInitial Target (P) Probabilities:")
+    print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
+    search_num = 1
+
