@@ -82,4 +82,79 @@ class Search():
             self.area_actual = 3
         return x,y
 
+    def calc_search_effectiveness(self):
+        """Setting decimal search effectiveness value per search area."""
+        self.sep1 = random.uniform(0.2, 0.9)
+        self.sep2 = random.uniform(0.2, 0.9)
+        self.sep3 = random.uniform(0.2, 0.9)
+
+    def conduct_search(sef, area_num, area_array, effectiveness_prob):
+        """Return search results and list searched coordinates"""
+
+        local_y_range = range(area_array.shape[0])
+        local_x_range = range(area_array.shape[1])
+
+        coords = list(itertools.product(local_x_range,local_y_range))
         
+        random.shuffle(coords)
+        
+        coords = coords[:int((len(coords) * effectiveness_prob))]
+
+        loc_actual = (self.sailor_actual[0], self.sailor_actual[1])
+
+        if area_num == self.area_actual and loc_actual in coords:
+            return "Found Sailor in Area {}.".format(area_num), coords
+        else:
+            return "Not found", coords
+    
+    def revise_target_probs(self):
+        """Update area target probablilities based on search effectiveness"""
+        denom = self.p1 * (1 - self.sep1) + self.p2 * (1 - self.sep2) + self.p3 * (1 - self.sep3)
+
+        self.p1 = self.p1 * (1 - self.sep1) / denom
+        self.p2 = self.p2 * (1 - self.sep2) / denom
+        self.p3 = self.p3 * (1 - self.sep3) / denom
+
+
+def draw_menu(search_num):
+    """Print Menu of Choices for Conducting Search"""
+    print("\nSearch {}".format(search_num))
+    print(
+        """
+        Choose next areas to search:
+
+        0 - Quit
+        1 - Search Area 1 twice
+        2 - Search Area 2 twice
+        3 - Search Area 3 twice
+        4 - Search Areas 1 & 2
+        5 - Search Areas 1 & 3
+        6 - Search Areas 2 & 3
+        7 - Start Over
+        """
+    )
+
+def main():
+    app.Search('Cape_Python')
+    app.draw_map(last_known(160,290))
+    sailor_x, sailor_y = app.sailor_final_location(num_search_areas = 3)
+    print ("-" * 65)
+    print("\nInitial Target (P) Probabilities:")
+    print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
+    search_num = 1
+
+    while True:
+        app.calc_search_effectiveness()
+        draw_menu(search_num)
+        choice = input("Choice: ")
+
+        if choice == "0":
+            sys.exit
+        elif choice == "1":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(1, app.sa1, app.sep1)
+            
+            app.sep1 = (len(set(coords_1 + coords_2))) / (len(app.sa1)**2)
+            app.sep2 = 0
+            app.sep3 = 0
