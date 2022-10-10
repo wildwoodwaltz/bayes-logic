@@ -107,6 +107,15 @@ class Search():
         else:
             return "Not found", coords
     
+    def revise_target_probs(self):
+        """Update area target probablilities based on search effectiveness"""
+        denom = self.p1 * (1 - self.sep1) + self.p2 * (1 - self.sep2) + self.p3 * (1 - self.sep3)
+
+        self.p1 = self.p1 * (1 - self.sep1) / denom
+        self.p2 = self.p2 * (1 - self.sep2) / denom
+        self.p3 = self.p3 * (1 - self.sep3) / denom
+
+
 def draw_menu(search_num):
     """Print Menu of Choices for Conducting Search"""
     print("\nSearch {}".format(search_num))
