@@ -87,3 +87,24 @@ class Search():
         self.sep1 = random.uniform(0.2, 0.9)
         self.sep2 = random.uniform(0.2, 0.9)
         self.sep3 = random.uniform(0.2, 0.9)
+
+    def conduct_search(sef, area_num, area_array, effectiveness_prob):
+        """Return search results and list searched coordinates"""
+
+        local_y_range = range(area_array.shape[0])
+        local_x_range = range(area_array.shape[1])
+
+        coords = list(itertools.product(local_x_range,local_y_range))
+        
+        random.shuffle(coords)
+        
+        coords = coords[:int((len(coords) * effectiveness_prob))]
+
+        loc_actual = (self.sailor_actual[0], self.sailor_actual[1])
+
+        if area_num == self.area_actual and loc_actual in coords:
+            return "Found Sailor in Area {}.".format(area_num), coords
+        else:
+            return "Not found", coords
+    
+    
