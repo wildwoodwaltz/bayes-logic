@@ -107,4 +107,20 @@ class Search():
         else:
             return "Not found", coords
     
-    
+def draw_menu(search_num):
+    """Print Menu of Choices for Conducting Search"""
+    print("\nSearch {}".format(search_num))
+    print(
+        """
+        Choose next areas to search:
+
+        0 - Quit
+        1 - Search Area 1 twice
+        2 - Search Area 2 twice
+        3 - Search Area 3 twice
+        4 - Search Areas 1 & 2
+        5 - Search Areas 1 & 3
+        6 - Search Areas 2 & 3
+        7 - Start Over
+        """
+    )
