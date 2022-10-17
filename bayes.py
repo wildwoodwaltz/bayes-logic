@@ -192,3 +192,13 @@ def main():
             results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
             
             app.sep1 = 0
+        elif choice == "7":
+            main()
+        else:
+            print("\nSorry, but that is an invalid selection.", file=sys.stderr)
+            continue
+        app.revise_target_probs() #apply bayes formula to update tar probability.
+        print("\nSearch {} Results 1 = {}".format(search_num, results_1), file=sys.stderr)
+        print("Search {} Results 2 = {}\n".format(search_num, results_2), file=sys.stderr)
+        print("Search {} Effectiveness (E):".format(search_num))
+        print("E1 = {:.3f}, E2 = {:.3f}, E3 = {:.3f}".format(app.sep1, app.sep2, app.sep3))
