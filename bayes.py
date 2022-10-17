@@ -158,3 +158,27 @@ def main():
             app.sep1 = (len(set(coords_1 + coords_2))) / (len(app.sa1)**2)
             app.sep2 = 0
             app.sep3 = 0
+        elif choice == "2":
+            
+            results_1, coords_1 = app.conduct_search(2, app.sa2, app.sep2)
+            results_2, coords_2 = app.conduct_search(2, app.sa2, app.sep2)
+            
+            app.sep1 = 0
+            app.sep2 = (len(set(coords_1 + coords_2))) / (len(app.sa)**2)
+            app.sep3 = 0
+        elif choice == "3":
+            
+            results_1, coords_1 = app.conduct_search(3, app.sa3, app.sep3)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep1 = 0
+            app.sep2 = 0
+            app.sep3 = (len(set(coords_1 + coords_2))) / (len(app.sa3)**2)
+        elif choice == "1":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(1, app.sa1, app.sep1)
+            
+            app.sep1 = (len(set(coords_1 + coords_2))) / (len(app.sa1)**2)
+            app.sep2 = 0
+            app.sep3 = 0
