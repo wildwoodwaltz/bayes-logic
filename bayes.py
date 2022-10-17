@@ -158,3 +158,47 @@ def main():
             app.sep1 = (len(set(coords_1 + coords_2))) / (len(app.sa1)**2)
             app.sep2 = 0
             app.sep3 = 0
+        elif choice == "2":
+            
+            results_1, coords_1 = app.conduct_search(2, app.sa2, app.sep2)
+            results_2, coords_2 = app.conduct_search(2, app.sa2, app.sep2)
+            
+            app.sep1 = 0
+            app.sep2 = (len(set(coords_1 + coords_2))) / (len(app.sa)**2)
+            app.sep3 = 0
+        elif choice == "3":
+            
+            results_1, coords_1 = app.conduct_search(3, app.sa3, app.sep3)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep1 = 0
+            app.sep2 = 0
+            app.sep3 = (len(set(coords_1 + coords_2))) / (len(app.sa3)**2)
+        elif choice == "4":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(2, app.sa2, app.sep2)
+            
+            app.sep3 = 0
+        elif choice == "5":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep2 = 0
+        elif choice == "6":
+            
+            results_1, coords_1 = app.conduct_search(2, app.sa2, app.sep2)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep1 = 0
+        elif choice == "7":
+            main()
+        else:
+            print("\nSorry, but that is an invalid selection.", file=sys.stderr)
+            continue
+        app.revise_target_probs() #apply bayes formula to update tar probability.
+        print("\nSearch {} Results 1 = {}".format(search_num, results_1), file=sys.stderr)
+        print("Search {} Results 2 = {}\n".format(search_num, results_2), file=sys.stderr)
+        print("Search {} Effectiveness (E):".format(search_num))
+        print("E1 = {:.3f}, E2 = {:.3f}, E3 = {:.3f}".format(app.sep1, app.sep2, app.sep3))
