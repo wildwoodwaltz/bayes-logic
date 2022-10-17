@@ -186,3 +186,9 @@ def main():
             results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
             
             app.sep2 = 0
+        elif choice == "6":
+            
+            results_1, coords_1 = app.conduct_search(2, app.sa2, app.sep2)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep1 = 0
