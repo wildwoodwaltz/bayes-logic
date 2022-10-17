@@ -180,3 +180,9 @@ def main():
             results_2, coords_2 = app.conduct_search(2, app.sa2, app.sep2)
             
             app.sep3 = 0
+        elif choice == "5":
+            
+            results_1, coords_1 = app.conduct_search(1, app.sa1, app.sep1)
+            results_2, coords_2 = app.conduct_search(3, app.sa3, app.sep3)
+            
+            app.sep2 = 0
