@@ -212,3 +212,6 @@ def main():
             cv.waitKey(1500)
             main()
         search_num += 1
+
+if __name__ == '__main__':
+    main()
