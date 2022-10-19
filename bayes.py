@@ -202,3 +202,7 @@ def main():
         print("Search {} Results 2 = {}\n".format(search_num, results_2), file=sys.stderr)
         print("Search {} Effectiveness (E):".format(search_num))
         print("E1 = {:.3f}, E2 = {:.3f}, E3 = {:.3f}".format(app.sep1, app.sep2, app.sep3))
+
+        if results_1 == "Not found" and results_2 == "Not found":
+            print("\nNew Target Probabilities (P) for search {}:".format(search_num + 1))
+            print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
