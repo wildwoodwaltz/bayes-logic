@@ -51,8 +51,8 @@ class Search():
         cv.rectangle(self.img, (SA3_CORNERS[0], SA3_CORNERS[1]),(SA3_CORNERS[2], SA3_CORNERS[3]), (0, 0, 0), 1)
         cv.putText(self.img, '3',(SA3_CORNERS[0] + 3, SA3_CORNERS[1] + 15),cv.FONT_HERSHEY_PLAIN, 1, 0)
 
-        cv.putText(self.img, '+' (last_pos), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
-        cv.putText(self.img, '+ = Last Known Position')
+        cv.putText(self.img, '+', (last_pos), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
+        cv.putText(self.img, '+ = Last Known Position', (274,355), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
 
         cv.putText(self.img, '* = Actual Position', (275,370), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
 
@@ -135,8 +135,8 @@ def draw_menu(search_num):
     )
 
 def main():
-    app.Search('Cape_Python')
-    app.draw_map(last_known(160,290))
+    app = Search('Cape_Python')
+    app.draw_map(last_pos=(160,290))
     sailor_x, sailor_y = app.sailor_final_location(num_search_areas = 3)
     print ("-" * 65)
     print("\nInitial Target (P) Probabilities:")
@@ -202,3 +202,16 @@ def main():
         print("Search {} Results 2 = {}\n".format(search_num, results_2), file=sys.stderr)
         print("Search {} Effectiveness (E):".format(search_num))
         print("E1 = {:.3f}, E2 = {:.3f}, E3 = {:.3f}".format(app.sep1, app.sep2, app.sep3))
+
+        if results_1 == "Not found" and results_2 == "Not found":
+            print("\nNew Target Probabilities (P) for search {}:".format(search_num + 1))
+            print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
+        else:
+            cv.circle(app.img, (sailor_x, sailor_y), 3, (255,0,0), -1)
+            cm.imshow("Search Area", app.img)   
+            cv.waitKey(1500)
+            main()
+        search_num += 1
+
+if __name__ == '__main__':
+    main()
