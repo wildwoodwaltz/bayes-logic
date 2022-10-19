@@ -51,8 +51,8 @@ class Search():
         cv.rectangle(self.img, (SA3_CORNERS[0], SA3_CORNERS[1]),(SA3_CORNERS[2], SA3_CORNERS[3]), (0, 0, 0), 1)
         cv.putText(self.img, '3',(SA3_CORNERS[0] + 3, SA3_CORNERS[1] + 15),cv.FONT_HERSHEY_PLAIN, 1, 0)
 
-        cv.putText(self.img, '+' (last_pos), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
-        cv.putText(self.img, '+ = Last Known Position')
+        cv.putText(self.img, '+', (last_pos), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
+        cv.putText(self.img, '+ = Last Known Position', (274,355), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
 
         cv.putText(self.img, '* = Actual Position', (275,370), cv.FONT_HERSHEY_PLAIN, 1, (0,0,255))
 
@@ -136,7 +136,7 @@ def draw_menu(search_num):
 
 def main():
     app = Search('Cape_Python')
-    app.draw_map(last_known=(160,290))
+    app.draw_map(last_pos=(160,290))
     sailor_x, sailor_y = app.sailor_final_location(num_search_areas = 3)
     print ("-" * 65)
     print("\nInitial Target (P) Probabilities:")
