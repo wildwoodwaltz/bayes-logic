@@ -206,3 +206,9 @@ def main():
         if results_1 == "Not found" and results_2 == "Not found":
             print("\nNew Target Probabilities (P) for search {}:".format(search_num + 1))
             print("P1 = {:.3f}, P2 = {:.3f}, P3 = {:.3f}".format(app.p1, app.p2, app.p3))
+        else:
+            cv.circle(app.img, (sailor_x, sailor_y), 3, (255,0,0), -1)
+            cm.imshow("Search Area", app.img)   
+            cv.waitKey(1500)
+            main()
+        search_num += 1
